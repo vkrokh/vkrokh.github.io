@@ -176,8 +176,8 @@ window.onload = function () {
             ctx.strokeStyle = 'blue';
             ctx.strokeText(x1 + '\u00D7' + y1 + ' (' + dx + '\u00D7' + dy + ')', x1 + 15, y1 - 10);
 
-            document.getElementById('position').value = document.getElementById('coordinateName').value; //x1 + '\u00D7' + y1;
-            document.getElementById('len').value = (0.007 * (1.7 + (dy / 192000))) / (dy / 192000) + ' M';
+            document.getElementById('position').value = x1 + '\u00D7' + y1;
+            document.getElementById('len').value = (0.007 * ((document.getElementById('coordinateName').value) + (dy / 192000))) / (dy / 192000) + ' M';
             document.getElementById('size').value = dx + '\u00D7' + dy;
         }
     };
