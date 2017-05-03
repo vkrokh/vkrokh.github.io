@@ -177,7 +177,7 @@ window.onload = function () {
             ctx.strokeText(x1 + '\u00D7' + y1 + ' (' + dx + '\u00D7' + dy + ')', x1 + 15, y1 - 10);
 
             document.getElementById('position').value = x1 + '\u00D7' + y1;
-            document.getElementById('len').value = (0.007 * (coordinateName + (dy / 192000))) / (dy / 192000) + ' M';
+            document.getElementById('len').value = (0.007 * (document.getElementById('coordinateName').value + (dy / 192000))) / (dy / 192000) + ' M';
             document.getElementById('size').value = dx + '\u00D7' + dy;
         }
     };
