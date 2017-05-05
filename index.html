@@ -98,10 +98,9 @@
     <div class="row float-back">
         <div class="col-lg-4 float-back">
             <div class="btn-group float-over" role="group" aria-label="...">
-                <button type="button" class="btn btn-default" title="Paste" onclick="Paste()">Вставить<span
-                        class="glyphicon glyphicon" aria-hidden="true"></span></button>
+                <button type="button" class="btn btn-default" title="Paste image" onclick="Paste()">Вставить <span
+                        class="glyphicon glyphicon-paste" aria-hidden="true"></span></button>
             </div>
-
             <div class="btn-group float-over" role="group" aria-label="...">
                 <button type="button" class="btn btn-default" title="Zoom in" onclick="ZoomIn()">Увеличить<span
                         class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
@@ -137,6 +136,7 @@
 
 <!-- main body -->
 <div id="imgdiv1" class="float-over">
+    <img id="pastedImage" src="./deps/sample_image.png" style="visibility: hidden; display: none;">
     <canvas id="can" width="1024" height="768" style="cursor: crosshair; width: 544px; height: 408px;"></canvas>
 </div>
 <div id="imgdiv2" contenteditable="true" style="display: none;">
