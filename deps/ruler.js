@@ -5,7 +5,6 @@ var click_count = 0,
 var os, browser;
 
 window.onload = function () {
-
     var os = GetOS();
     var obj;
     if (os == "MacOS")
