@@ -286,8 +286,7 @@ function GetCanvas() {
 }
 
 function Paste() {
-    alert("Hi");
-
+    alert("Пожалуйста, нажмите Ctrl+V")
 
 }
 
