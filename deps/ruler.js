@@ -54,11 +54,6 @@ window.onload = function () {
                 canvas.style.display = '';
                 document.getElementById('isize').value = xcan + "x" + ycan;
             };
-            //img = GetImage();
-            //if(img.complete)
-            //	Draw2();
-            //else
-            //	img.onload = Draw2;
             setTimeout(Draw2, 300);
         };
     } else {
@@ -192,14 +187,6 @@ window.onload = function () {
 var outputPlist = {};
 outputPlist.coordinates = [];
 
-function OutputPlist() {
-    //sort outputPlist.coordinates by children
-    var plistString = PlistParser.toPlist(outputPlist);
-    console.log(plistString);
-    alert(plistString);
-    debugger;
-}
-
 function NewPosition() {
     var coordinateName = document.getElementById('coordinateName').value;
 
@@ -298,17 +285,8 @@ function GetCanvas() {
 }
 
 function Paste() {
-    os = GetOS();
-    if (os == "UNIX")
-        alert("Press Ctrl+Shift+V to paste image");
-    else if (os == "MacOS")
-        alert("Press Command+V to paste image");
-    else if (os == "iOS")
-        alert("Tap on entry field and press the paste button to paste image");
-    else if (os == "Android")
-        alert("Press Menu+V or long tap on entry field and press the paste button to paste image");
-    else
-        alert("Press Ctrl+V to paste image");
+    alert("Пожалуйста, нажмите Ctrl+V")
+
 }
 
 function Save() {
@@ -321,36 +299,9 @@ function Save() {
     return false;
 }
 
-function Delete() {
-    canvas = GetCanvas();
-    canvas.style.display = 'none';
-    if (browser == 'Firefox') {
-        var img = GetImage();
-        img.parentNode.removeChild(img);
-        var imgdiv2 = document.getElementById('imgdiv2');
-        imgdiv2.focus();
-    }
-    document.getElementById('len').value = '';
-    document.getElementById('size').value = '';
-    click_count = 0;
-}
+
 
 function cancelSaveFile() {
     document.getElementById("getFilename").style.display = "none";
 }
 
-function saveFile() {
-    cancelSaveFile();
-    var name = document.getElementById("filename").value;
-    if (name == '') name = 'filename.png';
-
-    var img = GetImage();
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    canvas.getContext("2d").drawImage(img, 0, 0);
-
-    canvas.toBlob(function (blob) {
-        saveAs(blob, name);
-    });
-}
