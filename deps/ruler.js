@@ -286,89 +286,7 @@ function GetCanvas() {
 }
 
 function Paste() {
-    var os = GetOS();
-    var obj;
-    if (os == "MacOS")
-        obj = document.getElementById('inst2');
-    else if (os == "iOS")
-        obj = document.getElementById('inst3');
-    else if (os == "Android")
-        obj = document.getElementById('inst4');
-    else
-        obj = document.getElementById('inst1');
-
-    var imgdiv1 = document.getElementById('imgdiv1');
-    var imgdiv2 = document.getElementById('imgdiv2');
-
-    canvas = GetCanvas();
-    canvas.style.display = 'none';
-
-    browser = get_browser();
-    if (browser == 'Chrome') {
-        imgdiv2.style.display = 'none';
-        imgdiv1.style.display = '';
-    } else if (browser == 'Firefox') {
-        imgdiv1.style.display = 'none';
-        imgdiv2.style.display = '';
-        imgdiv2.focus();
-    } else {
-        imgdiv2.style.display = 'none';
-        imgdiv1.style.display = '';
-        alert('Pixel ruler may not be supported with this browser\nPlease try with Chrome or Firefox');
-    }
-
-    if (browser == 'Firefox') {
-        document.onpaste = function (event) {
-            var Draw2 = function () {
-                img = GetImage();
-                if (!img) img = this;
-                var canvas = GetCanvas();
-                canvas.width = img.width;
-                canvas.height = img.height;
-                canvas.style.width = img.width + 'px';
-                canvas.style.height = img.height + 'px';
-                canvas.getContext("2d").drawImage(img, 0, 0);
-                canvas.style.cursor = "crosshair"; //"default"
-                xcan0 = xcan = img.width;
-                ycan0 = ycan = img.height;
-                img.style.display = 'none';
-                canvas.style.display = '';
-                document.getElementById('isize').value = xcan + "x" + ycan;
-            };
-            setTimeout(Draw2, 300);
-        };
-    } else {
-        document.onpaste = function (event) {
-            // use event.originalEvent.clipboard for newer chrome versions
-            var clipboardData = event.clipboardData || event.originalEvent.clipboardData;
-            var items = clipboardData.items;
-            console.log(JSON.stringify(items)); // will give you the mime types
-            // find pasted image among pasted items
-            var blob;
-            for (var i = 0; i < items.length; i++) {
-                if (items[i].type.indexOf("image") === 0) {
-                    blob = items[i].getAsFile();
-                }
-            }
-            // load image if there is a pasted image
-            if (blob !== null) {
-                var reader = new FileReader();
-                reader.onload = function (event) {
-                    //console.log(event.target.result); // data url!
-                    img = document.getElementById("pastedImage");
-                    img.src = event.target.result;
-                    if (img.complete)
-                        DrawCanvas(0);
-                    else
-                        img.onload = function () {
-                            DrawCanvas(0);
-                        };
-                };
-
-                reader.readAsDataURL(blob);
-            }
-        };
-    }
+    alert("Hi");
 
 
 }
@@ -382,6 +300,7 @@ function Save() {
 
     return false;
 }
+
 
 
 function cancelSaveFile() {
