@@ -189,7 +189,7 @@ window.onload = function () {
     ZoomOut();
     ZoomOut();
     ZoomOut();
-};
+};x
 var outputPlist = {};
 outputPlist.coordinates = [];
 
@@ -298,13 +298,19 @@ function GetCanvas() {
 }
 
 function Paste() {
-    var preview = document.querySelector('imgdiv1');
     var file    = document.querySelector('input[type=file]').files[0];
     var reader  = new FileReader();
-
-    reader.addEventListener("load", function () {
-        preview.src = reader.result;
-    }, false);
+    reader.onload = function (event) {
+        //console.log(event.target.result); // data url!
+        img = document.getElementById("pastedImage");
+        img.src = event.target.result;
+        if (img.complete)
+            DrawCanvas(0);
+        else
+            img.onload = function () {
+                DrawCanvas(0);
+            };
+    };
 
     if (file) {
         reader.readAsDataURL(file);
