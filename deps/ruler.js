@@ -189,7 +189,7 @@ window.onload = function () {
     ZoomOut();
     ZoomOut();
     ZoomOut();
-};x
+};
 var outputPlist = {};
 outputPlist.coordinates = [];
 
