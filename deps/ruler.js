@@ -308,7 +308,9 @@ function Paste() {
 
     if (file) {
         reader.readAsDataURL(file);
+        DrawCanvas(0);
     }
+
 }
 
 function Save() {
