@@ -90,6 +90,7 @@ window.onload = function () {
                 };
 
                 reader.readAsDataURL(blob);
+
             }
         };
     }
@@ -297,17 +298,17 @@ function GetCanvas() {
 }
 
 function Paste() {
-    os = GetOS();
-    if (os == "UNIX")
-        alert("Press Ctrl+Shift+V to paste image");
-    else if (os == "MacOS")
-        alert("Press Command+V to paste image");
-    else if (os == "iOS")
-        alert("Tap on entry field and press the paste button to paste image");
-    else if (os == "Android")
-        alert("Press Menu+V or long tap on entry field and press the paste button to paste image");
-    else
-        alert("Press Ctrl+V to paste image");
+    var preview = document.querySelector('img');
+    var file    = document.querySelector('input[type=file]').files[0];
+    var reader  = new FileReader();
+
+    reader.addEventListener("load", function () {
+        preview.src = reader.result;
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
 }
 
 function Save() {
