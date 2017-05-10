@@ -298,7 +298,7 @@ function GetCanvas() {
 }
 
 function Paste() {
-    var preview = document.querySelector('img');
+    var preview = document.querySelector('imgdiv1');
     var file    = document.querySelector('input[type=file]').files[0];
     var reader  = new FileReader();
 
